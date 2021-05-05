@@ -1,12 +1,18 @@
 import { getRepository } from "typeorm";
 
 
-// const repo = getRepository(Room);
+export interface IRoomRepository{
+    save(room):void; 
+}
 
-// repo.save
+export class RoomRepository implements IRoomRepository{
+    private readonly _repository: any;
 
-interface IRoomRepository{
-    
-    save(Room):void; 
+    constructor(){
+        this._repository = getRepository(Client);
+    }
 
+    save(room: Room): void {
+        this._repository.save(room).catch((err) => console.log(err));
+    }
 }

@@ -1,12 +1,15 @@
-class RoomRent{
+import {ClientRepository} from "./ClientRepository";
+import {RoomRepository} from "./RoomRepository";
 
-    private clients:ClientRepository ;
-    private rooms:RoomRepository ;
+export class RoomRent{
+
+    private clients: ClientRepository;
+    private rooms: RoomRepository;
 
 
     constructor(
-        clients:ClientRepository ,
-        rooms:RoomRepository
+        clients: ClientRepository,
+        rooms: RoomRepository
     ){
         this.clients = clients;
         this.rooms = rooms;
@@ -14,7 +17,7 @@ class RoomRent{
 
 
 
-    // function execute():void{
+    function rent():void{
 
-    // }
+    }
 }

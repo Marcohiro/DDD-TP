@@ -1,12 +1,23 @@
 import { getRepository } from "typeorm";
 
 
-// const repo = getRepository(Client);
-
-// repo.save
-
-interface IClientRepository{
+export interface IClientRepository{
     
-    save(Client):void; 
+    save(client):void; 
+
+}
+
+export class ClientRepository implements IClientRepository{
+    
+    private readonly _repository: any;
+
+    constructor(){
+        this._repository = getRepository(Client);
+    }
+
+    save(client: Client): void {
+        this._repository.save(client).catch((err) => console.log(err));
+    }
+
 
 }
