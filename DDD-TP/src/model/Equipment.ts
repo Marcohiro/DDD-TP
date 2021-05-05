@@ -11,8 +11,6 @@ class Equipment{
         this.name = name;
     }
 
-    
-
-
-
 }
+
+export default Equipment;
