@@ -1,4 +1,4 @@
-import RentRepository, { IRentRepository } from "../src/use_case/RentRepository";
+import { IRentRepository } from "../src/use_case/RentRepository";
 import { RoomRent } from "../src/use_case/RoomRent";
 import { mock } from 'jest-mock-extended';
 import { IClientRepository } from "../src/use_case/ClientRepository";
@@ -43,8 +43,8 @@ describe('Test rentWithoutEquipments for RoomRent', () => {
      roomRent.rentWithoutEquipments(client, room, now);   
      
      //5. Assert and verify that .save() was called with rent parameter
-     expect(mockRoomRepo.save).toHaveBeenCalled();
-     expect(mockRoomRepo.save).toHaveBeenCalledWith(expectedRent);
+     expect(mockRentRepo.save).toHaveBeenCalled();
+     expect(mockRentRepo.save).toHaveBeenCalledWith(expectedRent);
   });
 });
 
