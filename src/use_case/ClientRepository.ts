@@ -5,7 +5,7 @@ import Client from "../model/Client";
 export interface IClientRepository{
     
     save(client):void; 
-
+    findById(id):Client;
 }
 
 export class ClientRepository implements IClientRepository{
@@ -20,5 +20,8 @@ export class ClientRepository implements IClientRepository{
         this._repository.save(client).catch((err) => console.log(err));
     }
 
+    findById(id:number):Client{
+        return this._repository.findById(id).catch((err) => console.log(err));
+    }
 
 }

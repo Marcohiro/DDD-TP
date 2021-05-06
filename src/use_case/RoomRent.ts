@@ -1,10 +1,11 @@
-import {ClientRepository, IClientRepository} from "./ClientRepository";
-import {IRoomRepository, RoomRepository} from "./RoomRepository";
-import { IRentRepository, RentRepository } from "./RentRepository";
+import { IClientRepository } from "./ClientRepository";
+import { IRoomRepository } from "./RoomRepository";
+import { IRentRepository } from "./RentRepository";
 
 import Room from '../model/Room';
 import Client from '../model/Client';
 import Rent from "../model/Rent";
+import Equipment from "../model/Equipment";
 
 export class RoomRent{
 
@@ -22,12 +23,21 @@ export class RoomRent{
         this.rents = rents;
     }
 
-    rentWithoutEquipments(client:Client, room:Room, date: any):void{
+    rentWithoutEquipments(clientId:number, roomId:number, date: any):Rent{
         const rent:Rent = new Rent();
+        const client:Client = this.clients.findById(clientId); //Shared state
+        const room:Room = this.rooms.findById(roomId); //Shared state
+
         rent.client = client;
-        rent.room = room;
         rent.date = date;
-        this.rents.save(rent);
+        rent.room = this.rooms.findSuitable(room);
+
+        this.rents.save(rent); //Shared state
+        return rent;
+    }
+
+    rentWithEquipments(clientId:number, roomId:number, date:any, equipments:Equipment[]):void{
+
     }
 
 }

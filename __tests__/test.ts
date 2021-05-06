@@ -45,6 +45,10 @@ describe('Test rentWithoutEquipments for RoomRent', () => {
      //5. Assert and verify that .save() was called with rent parameter
      expect(mockRentRepo.save).toHaveBeenCalled();
      expect(mockRentRepo.save).toHaveBeenCalledWith(expectedRent);
+
+     //6. Assert and verify that created rent exists
+     const createdRent = mockRentRepo.getByRent(expectedRent);
+     expect(createdRent === expectedRent);
   });
 });
 
