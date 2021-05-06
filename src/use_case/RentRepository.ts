@@ -4,7 +4,7 @@ import Rent from '../model/Rent';
 
 
 export interface IRentRepository{
-    save(room):void; 
+    save(room): void; 
 }
 
 export class RentRepository implements IRentRepository{

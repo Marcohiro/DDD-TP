@@ -1,4 +1,5 @@
 import { getRepository } from "typeorm";
+import Client from "../model/Client";
 
 
 export interface IClientRepository{
