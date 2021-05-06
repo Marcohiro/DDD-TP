@@ -18,3 +18,5 @@ export class RentRepository implements IRentRepository{
         this._repository.save(rent).catch((err) => console.log(err));
     }
 }
+
+export default RentRepository
