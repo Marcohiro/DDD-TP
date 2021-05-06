@@ -36,7 +36,18 @@ export class RoomRent {
         return rent;
     }
 
-    rentWithEquipments(clientId: number, roomId: number, date: any, equipments: Equipment[]) {
+    rentWithEquipments(clientId: number, roomId: number, date: any, equipments: Equipment[]): Rent {
+        const rent: Rent = new Rent();
+        const client: Client = this.clients.findById(clientId); //Shared state
+        const room: Room = this.rooms.findById(roomId); //Shared state
+
+        rent.client = client;
+        rent.date = date;
+        rent.room = this.rooms.findSuitable(room);
+        rent.equipements = equipments;
+
+        this.rents.save(rent); //Shared state
+        return rent;
 
     }
 
