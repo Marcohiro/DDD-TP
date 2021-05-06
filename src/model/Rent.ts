@@ -1,13 +1,14 @@
 import Client from "./Client";
 import Equipment from "./Equipment";
 import Room from "./Room";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, OneToMany, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name: "RentsTable"})
-class Rent{
-    
+
+@Entity({ name: "RentsTable" })
+class Rent {
+
     @PrimaryGeneratedColumn("uuid")
-    id:number;
+    id: number;
 
     @Column()
     client: Client;
@@ -18,9 +19,9 @@ class Rent{
     @Column()
     room: Room;
 
-    @Column()
-    equipements?: Equipment;    
+    @OneToMany()
+    equipements?: Equipment[];
 
-} 
+}
 
 export default Rent;

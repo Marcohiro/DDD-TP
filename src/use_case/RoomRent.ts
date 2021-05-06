@@ -7,7 +7,7 @@ import Client from '../model/Client';
 import Rent from "../model/Rent";
 import Equipment from "../model/Equipment";
 
-export class RoomRent{
+export class RoomRent {
 
     private clients: IClientRepository;
     private rooms: IRoomRepository;
@@ -17,16 +17,16 @@ export class RoomRent{
         clients: IClientRepository,
         rooms: IRoomRepository,
         rents: IRentRepository
-    ){
+    ) {
         this.clients = clients;
         this.rooms = rooms;
         this.rents = rents;
     }
 
-    rentWithoutEquipments(clientId:number, roomId:number, date: any):Rent{
-        const rent:Rent = new Rent();
-        const client:Client = this.clients.findById(clientId); //Shared state
-        const room:Room = this.rooms.findById(roomId); //Shared state
+    rentWithoutEquipments(clientId: number, roomId: number, date: any): Rent {
+        const rent: Rent = new Rent();
+        const client: Client = this.clients.findById(clientId); //Shared state
+        const room: Room = this.rooms.findById(roomId); //Shared state
 
         rent.client = client;
         rent.date = date;
@@ -36,7 +36,7 @@ export class RoomRent{
         return rent;
     }
 
-    rentWithEquipments(clientId:number, roomId:number, date:any, equipments:Equipment[]):void{
+    rentWithEquipments(clientId: number, roomId: number, date: any, equipments: Equipment[]) {
 
     }
 
