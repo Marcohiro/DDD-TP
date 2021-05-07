@@ -37,9 +37,11 @@ describe('Test rentWithoutEquipments for RoomRent', () => {
      expectedRent.room = room;
      const now = Date.now().toString();
      expectedRent.date = now;
+    
+     mockClientRepo.findById.mockReturnValue(client);
+     mockRoomRepo.findById.mockReturnValue(room);
+     mockRoomRepo.findSuitable.mockReturnValue(room);    
 
-     mockClientRepo.save(client)
-     mockRoomRepo.save(room)
 
      //4. call RoomRent feature
      roomRent.rentWithoutEquipments(client.id, room.id, now);   
