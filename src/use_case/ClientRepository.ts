@@ -8,20 +8,3 @@ export interface IClientRepository{
     findById(id):Client;
 }
 
-export class ClientRepository implements IClientRepository{
-    
-    private readonly _repository: any;
-
-    constructor(){
-        this._repository = getRepository(Client);
-    }
-
-    save(client: Client): void {
-        this._repository.save(client).catch((err) => console.log(err));
-    }
-
-    findById(id:number):Client{
-        return this._repository.findById(id).catch((err) => console.log(err));
-    }
-
-}
