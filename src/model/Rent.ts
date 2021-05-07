@@ -19,7 +19,7 @@ class Rent {
     @Column()
     room: Room;
 
-    @OneToMany()
+    @OneToMany(()=> Equipment, equipment => equipment.rent)
     equipements?: Equipment[];
 
 }

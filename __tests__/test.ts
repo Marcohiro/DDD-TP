@@ -7,7 +7,6 @@ import Client from "../src/model/Client";
 import Room from "../src/model/Room";
 import Rent from "../src/model/Rent";
 
-
 // RoomRent_Test_rentWithoutEquipments
 describe('Test rentWithoutEquipments for RoomRent', () => {
   test('gets client and room then saves rent', () => {
@@ -39,8 +38,11 @@ describe('Test rentWithoutEquipments for RoomRent', () => {
      const now = Date.now().toString();
      expectedRent.date = now;
 
+     mockClientRepo.save(client)
+     mockRoomRepo.save(room)
+
      //4. call RoomRent feature
-     roomRent.rentWithoutEquipments(client, room, now);   
+     roomRent.rentWithoutEquipments(client.id, room.id, now);   
      
      //5. Assert and verify that .save() was called with rent parameter
      expect(mockRentRepo.save).toHaveBeenCalled();
